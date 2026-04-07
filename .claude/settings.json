@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developer.riotgames.com)",
+      "Bash(pip3 list:*)",
+      "Bash(pg_isready)",
+      "Bash(pip3 install:*)",
+      "Bash(brew services:*)",
+      "Bash(python3 -m venv \"/tmp/riot_venv\")",
+      "Bash(\"/tmp/riot_venv/bin/pip\" install:*)",
+      "Bash(psql postgres:*)",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py init-db)",
+      "Bash(psql riot_data -c \"\\\\dt\")",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py lol --name \"Faker\" --tag KR1 --region kr --matches 5)",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py lol --name \"Faker\" --tag T1 --region kr --matches 5)",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py lol --name \"Doublelift\" --tag NA1 --region na1 --matches 5)",
+      "Bash(/tmp/riot_venv/bin/python -c ':*)",
+      "Bash(psql riot_data -c \"DROP SCHEMA public CASCADE; CREATE SCHEMA public;\")",
+      "Bash(psql riot_data -c \"SELECT * FROM accounts;\")",
+      "Bash(psql riot_data -c \"SELECT * FROM lol_summoners;\")",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py lol --name \"Hide on bush\" --tag KR1 --region kr --matches 5)",
+      "Bash(psql riot_data -c \"SELECT queue_type, tier, rank, league_points, wins, losses FROM lol_ranked_stats;\")",
+      "Bash(psql riot_data -c \"SELECT match_id, game_mode, game_duration, game_start FROM lol_matches ORDER BY game_start DESC;\")",
+      "Bash(psql riot_data -c \"SELECT champion_name, kills, deaths, assists, win, position FROM lol_match_participants WHERE puuid = \\(SELECT puuid FROM accounts LIMIT 1\\) ORDER BY match_id DESC;\")",
+      "Bash(psql riot_data -c \"SELECT champion_name, kills, deaths, assists, win, position FROM lol_match_participants WHERE puuid = \\(SELECT puuid FROM accounts WHERE game_name = 'Hide on bush'\\) ORDER BY match_id DESC;\")",
+      "Bash(psql riot_data -f \"/Users/azat/Library/Application Support/Claude/local-agent-mode-sessions/52bd5888-a0b7-439c-abab-f42b2217d4a0/c96848c8-035e-4c93-9234-e3da8fdc705b/local_e6eefacb-ea77-42df-93d3-8c268e3caad8/outputs/riot_pg_project/queries.sql\")",
+      "Bash(code --list-extensions)",
+      "Read(//Users/azat/.vscode/extensions/**)",
+      "Read(//Users/azat/Library/Application Support/Code/User/**)",
+      "Bash(\"/tmp/riot_venv/bin/python\" main.py tft --name \"Hide on bush\" --tag KR1 --region kr --matches 5)",
+      "Bash(psql riot_data -c \"SELECT COUNT\\(*\\) FROM lol_matches; SELECT COUNT\\(*\\) FROM lol_match_participants;\")",
+      "Bash(psql riot_data -c \"TRUNCATE lol_matches CASCADE; TRUNCATE lol_summoners CASCADE; TRUNCATE accounts CASCADE;\")",
+      "Bash(psql postgresql://azat@localhost:5432/riot_data -c ':*)",
+      "Bash(psql postgresql://azat@localhost:5432/riot_data -c \"SELECT conname, conrelid::regclass FROM pg_constraint WHERE conname LIKE 'uq_%match%puuid';\")",
+      "Bash(gh repo:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/azat/Library/Application Support/Code/User"
+    ]
+  }
+}

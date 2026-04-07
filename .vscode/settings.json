@@ -1,0 +1,16 @@
+{
+    "mssql.intelliSense.enableIntelliSense": false,
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "riot_data",
+            "database": "riot_data",
+            "username": "azat",
+            "password": ""
+        }
+    ]
+}
