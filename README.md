@@ -274,7 +274,7 @@ pip install -r requirements.txt
 
 # 2. Configure environment
 cp .env.example .env
-# Edit .env with your RIOT_API_KEY and DATABASE_URL
+# Edit .env with your RIOT_API_KEY, DATABASE_URL, and (optionally) RIOT_USERNAME / RIOT_PASSWORD
 
 # 3. Create database
 psql -c "CREATE DATABASE riot_data;"
@@ -295,6 +295,16 @@ python main.py all --name "YourName" --tag NA1 --region na1 --val-region na
 
 # Control match history depth (default: 10)
 python main.py lol --name "Hide on bush" --tag KR1 --region kr --matches 20
+
+# Auto-rotate an expired dev key before syncing (requires RIOT_USERNAME + RIOT_PASSWORD in .env)
+python main.py lol --name "YourName" --tag NA1 --region na1 --refresh-key
+```
+
+### Dev setup (tests + key rotation)
+
+```bash
+pip install -r requirements-dev.txt
+playwright install chromium   # only needed for scripts/refresh_api_key.py
 ```
 
 ---
@@ -311,6 +321,16 @@ python main.py lol --name "Hide on bush" --tag KR1 --region kr --matches 20
 | OCE | `oc1` | `ap` |
 | Latin America | `la1` / `la2` | `na` |
 | Southeast Asia | `sg2` / `ph2` etc. | `sea` |
+
+---
+
+## Testing
+
+```bash
+pytest tests/
+```
+
+Tests cover the `_ts` timestamp helper, the `_upsert` idempotency logic, rate-limit thread safety in `RiotClient`, and the `update_env_file` key-rotation utility. No database or network connection required.
 
 ---
 
