@@ -1,0 +1,6 @@
+# Key rotation script
+# Install with: pip install -r requirements-dev.txt && playwright install chromium
+playwright==1.44.0
+
+# Testing
+pytest==8.2.2
